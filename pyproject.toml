@@ -1,0 +1,26 @@
+[project]
+name = "dq-sentinel"
+version = "0.1.0"
+description = "Configurable data quality governance engine"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov"]
+
+# After `pip install -e .`, this command works from ANY directory, on any
+# machine — no cd into the repo, no sys.path hacks, no assumptions about
+# how deep this file sits relative to anything.
+[project.scripts]
+dq-sentinel-run = "dq_sentinel.runners.dq_engine_runner:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["dq_sentinel*"]
